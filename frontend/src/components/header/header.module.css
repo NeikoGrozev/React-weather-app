@@ -3,10 +3,16 @@
   height: 40px;
   background-color: #f5e06d;
   display: flex;
-  align-items: center;
+  justify-content: space-between;
   border-bottom-left-radius: 20px;
   border-bottom-right-radius: 20px;
   margin-bottom: 20px;
+}
+
+.logoContainer {
+  display: flex;
+  padding-left: 20px;
+  align-items: center;
 }
 
 .logo {
@@ -18,4 +24,16 @@
 .appName {
   color: #2984ce;
   font-size: 18px;
+}
+
+.menuContainer {
+  display: flex;
+  padding-right: 30px;
+  align-items: center;
+}
+
+.button a {
+  color: #2984ce;
+  text-decoration: none !important;
+  padding: 0 10px;
 }
