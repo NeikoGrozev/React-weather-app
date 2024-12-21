@@ -1,8 +1,10 @@
 import { configureStore } from "@reduxjs/toolkit";
+import app from "./app/slice";
 import account from "./account/slice";
 
 const store = configureStore({
   reducer: {
+    app,
     account,
   },
   devTools: true,
