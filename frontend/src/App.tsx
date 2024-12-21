@@ -9,7 +9,7 @@ import "./App.css";
 
 function App() {
   return (
-    <div className={`wrapper night`}>
+    <div className={`wrapper`}>
       <Header />
       <Routes>
         <Route path={PATHS.Home} element={<Home />} />

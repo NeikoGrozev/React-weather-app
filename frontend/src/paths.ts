@@ -1,7 +1,7 @@
 enum PATHS {
   Home = "/",
-  SignUp = "/users/signup",
-  Login = "/users/login",
+  SignUp = "/signup",
+  Login = "/login",
 }
 
 export default PATHS;
