@@ -4,6 +4,9 @@
   background-color: #f5e06d;
   display: flex;
   align-items: center;
+  border-bottom-left-radius: 20px;
+  border-bottom-right-radius: 20px;
+  margin-bottom: 20px;
 }
 
 .logo {
@@ -13,6 +16,6 @@
 }
 
 .appName {
-  color: #42a1f5;
+  color: #2984ce;
   font-size: 18px;
 }

@@ -1,6 +1,6 @@
 .wrapper {
   margin: 0;
-  height: 100vh;
+  min-height: 100vh;
   background-image: url("./assets/backgrounds/day-background.jpg");
   background-position: center;
   background-size: cover;

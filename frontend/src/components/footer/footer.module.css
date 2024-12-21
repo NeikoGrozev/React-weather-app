@@ -4,4 +4,13 @@
   background-color: #2984ce;
   position: absolute;
   bottom: 0;
+  display: flex;
+  align-items: center;
+  color: #f5e06d;
+  border-top-left-radius: 20px;
+  border-top-right-radius: 20px;
+}
+
+.copy {
+  margin: 0 20px;
 }
