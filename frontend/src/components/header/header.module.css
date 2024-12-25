@@ -21,8 +21,9 @@
   margin: 0 10px;
 }
 
-.appName {
+.appName a {
   color: #2984ce;
+  text-decoration: none !important;
   font-size: 18px;
 }
 

@@ -11,10 +11,23 @@ import { useEffect } from "react";
 import { appAction } from "./store/app/slice";
 import { TEN_MINUTES } from "./constants";
 import { isDay } from "./store/app/selectors";
+import { getAuth, onAuthStateChanged } from "firebase/auth";
+import { accountAction } from "./store/account/slice";
+import { serializeUser } from "./firebase/firebaseHelper";
+import { UserProps } from "./interfaces/UserProps";
 
 function App() {
   const dispatch = useAppDispatch();
   const dayOrNight = useAppSelector(isDay);
+  const auth = getAuth();
+
+  useEffect(() => {
+    const unsubscribe = onAuthStateChanged(auth, (currentUser) => {
+      dispatch(accountAction.login(serializeUser(currentUser as UserProps)));
+    });
+
+    return () => unsubscribe();
+  }, [dispatch, auth]);
 
   useEffect(() => {
     dispatch(appAction.checkTime());
@@ -26,7 +39,7 @@ function App() {
   }, [dispatch]);
 
   return (
-    <div className={`wrapper ${dayOrNight && "night"}`}>
+    <div className={`wrapper ${dayOrNight ? "night" : "day"}`}>
       <Header />
       <Routes>
         <Route path={PATHS.Home} element={<Home />} />
