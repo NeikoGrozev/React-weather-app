@@ -84,3 +84,13 @@
   color: #f5e06d;
   font-style: italic;
 }
+
+.error {
+  color: red;
+  background-color: #f5e06d;
+  font-size: 10px;
+  margin: 5px;
+  padding: 3px 0;
+  text-align: center;
+  border-radius: 5px;
+}

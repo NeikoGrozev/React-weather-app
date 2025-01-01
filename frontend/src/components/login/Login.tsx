@@ -10,6 +10,7 @@ import PATHS from "../../paths";
 import style from "./login.module.css";
 import { EMAIL, PASSWORD } from "../../constants/placeholders";
 import { Link } from "react-router-dom";
+import { LoginErrorProps } from "../../interfaces/LoginErrorProps";
 
 const FormKeys = {
   Email: "email",
@@ -25,6 +26,7 @@ const Login = () => {
   const dispatch = useAppDispatch();
   const navigate = useNavigate();
   const [user, setUser] = useState(initialState);
+  const [errors, setErrors] = useState<LoginErrorProps>({});
 
   const onInputHandler = (e: ChangeEvent<HTMLInputElement>) => {
     e.preventDefault();
@@ -35,20 +37,48 @@ const Login = () => {
     }));
   };
 
+  const validateInputs = () => {
+    const newErrors: LoginErrorProps = {};
+
+    // Email validation
+    if (!user.email) {
+      newErrors.email = "Email is required.";
+    } else if (!/^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$/.test(user.email)) {
+      newErrors.email = "Invalid email format.";
+    }
+
+    // Password validation
+    if (!user.password) {
+      newErrors.password = "Password is required.";
+    } else if (user.password.length < 6) {
+      newErrors.password = "Password must be at least 6 characters long.";
+    }
+
+    setErrors(newErrors);
+    return Object.keys(newErrors).length === 0;
+  };
+
   const handleLogin = async (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
 
+    if (!validateInputs()) return;
+
     const response = await login(user.email, user.password);
 
-    dispatch(
-      accountAction.login({
-        uid: response?.uid,
-        email: response?.email,
-        username: response?.username,
-      })
-    );
-    setUser(initialState);
-    navigate(PATHS.Home);
+    if (!response) {
+      navigate(PATHS.Login);
+      setErrors({ password: "Invalid email or password." });
+    } else {
+      dispatch(
+        accountAction.login({
+          uid: response?.uid,
+          email: response?.email,
+          username: response?.username,
+        })
+      );
+      setUser(initialState);
+      navigate(PATHS.Home);
+    }
   };
 
   return (
@@ -70,6 +100,7 @@ const Login = () => {
               className={style.input}
               required
             />
+            {errors.email && <p className={style.error}>{errors.email}</p>}
           </div>
           <div className={style.inputContainer}>
             <span className={style.icon}>
@@ -84,6 +115,9 @@ const Login = () => {
               className={style.input}
               required
             />
+            {errors.password && (
+              <p className={style.error}>{errors.password}</p>
+            )}
           </div>
           <button type="submit" className={style.button}>
             Login
