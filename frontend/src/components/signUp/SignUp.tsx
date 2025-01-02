@@ -16,11 +16,13 @@ import {
 } from "../../constants/placeholders";
 import { Link } from "react-router-dom";
 import { SignUpErrorProps } from "../../interfaces/SignUpErrorProps";
+import { appAction } from "../../store/app/slice";
 
 const FormKeys = {
   Username: "username",
   Email: "email",
   Password: "password",
+  ConfirmPassword: "confirmPassword",
 };
 
 const initialState: SignUpUserProps = {
@@ -85,9 +87,8 @@ const SignUp = () => {
 
     if (!validateInputs()) return;
 
+    dispatch(appAction.setSpinnerIsVisible(true));
     const response = await register(user.email, user.password, user.username);
-
-    console.log("=======", response);
 
     dispatch(
       accountAction.login({
@@ -98,6 +99,7 @@ const SignUp = () => {
     );
     setUser(initialState);
     navigate(PATHS.Home);
+    dispatch(appAction.setSpinnerIsVisible(false));
   };
 
   return (
@@ -163,7 +165,7 @@ const SignUp = () => {
             </span>
             <input
               type="password"
-              name={FormKeys.Password}
+              name={FormKeys.ConfirmPassword}
               value={user.confirmPassword}
               onChange={onInputHandler}
               placeholder={CONFIRM_PASSWORD}

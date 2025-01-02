@@ -10,15 +10,17 @@ import { useAppDispatch, useAppSelector } from "./hooks";
 import { useEffect } from "react";
 import { appAction } from "./store/app/slice";
 import { TEN_MINUTES } from "./constants";
-import { isDay } from "./store/app/selectors";
+import { isDay, isSpinnerVisible } from "./store/app/selectors";
 import { getAuth, onAuthStateChanged } from "firebase/auth";
 import { accountAction } from "./store/account/slice";
 import { serializeUser } from "./firebase/firebaseHelper";
 import { UserProps } from "./interfaces/UserProps";
+import Spinner from "./components/spinner/Spinner";
 
 function App() {
   const dispatch = useAppDispatch();
   const dayOrNight = useAppSelector(isDay);
+  const showSpinner = useAppSelector(isSpinnerVisible);
   const auth = getAuth();
 
   useEffect(() => {
@@ -47,6 +49,7 @@ function App() {
         <Route path={PATHS.Login} element={<Login />} />
       </Routes>
       <Footer />
+      {showSpinner && <Spinner />}
     </div>
   );
 }

@@ -11,6 +11,7 @@ import style from "./login.module.css";
 import { EMAIL, PASSWORD } from "../../constants/placeholders";
 import { Link } from "react-router-dom";
 import { LoginErrorProps } from "../../interfaces/LoginErrorProps";
+import { appAction } from "../../store/app/slice";
 
 const FormKeys = {
   Email: "email",
@@ -63,6 +64,7 @@ const Login = () => {
 
     if (!validateInputs()) return;
 
+    dispatch(appAction.setSpinnerIsVisible(true));
     const response = await login(user.email, user.password);
 
     if (!response) {
@@ -79,6 +81,8 @@ const Login = () => {
       setUser(initialState);
       navigate(PATHS.Home);
     }
+
+    dispatch(appAction.setSpinnerIsVisible(false));
   };
 
   return (

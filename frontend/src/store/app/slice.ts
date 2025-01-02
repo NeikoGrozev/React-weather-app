@@ -2,10 +2,12 @@ import { createSlice } from "@reduxjs/toolkit";
 
 interface initialStateProp {
   isDay: boolean;
+  isSpinnerVisible: boolean;
 }
 
 const initialState: initialStateProp = {
   isDay: true,
+  isSpinnerVisible: false,
 };
 const appSlice = createSlice({
   name: "appSlice",
@@ -20,6 +22,9 @@ const appSlice = createSlice({
       } else {
         state.isDay = true;
       }
+    },
+    setSpinnerIsVisible(state, action) {
+      state.isSpinnerVisible = action.payload;
     },
   },
 });

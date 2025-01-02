@@ -1,0 +1,5 @@
+.spinnerContainer {
+  position: absolute;
+  left: calc(50% - 40px);
+  bottom: 30%;
+}
