@@ -16,6 +16,7 @@ import { accountAction } from "./store/account/slice";
 import { serializeUser } from "./firebase/firebaseHelper";
 import { UserProps } from "./interfaces/UserProps";
 import Spinner from "./components/spinner/Spinner";
+import "./styles/main.scss";
 
 function App() {
   const dispatch = useAppDispatch();

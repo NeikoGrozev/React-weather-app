@@ -1,17 +1,16 @@
 import { ChangeEvent, FormEvent, useState } from "react";
-import { LoginUserProps } from "../../interfaces/LoginUserProps";
-import { login } from "../../firebase/auth";
+import { Link, useNavigate } from "react-router-dom";
 import { useAppDispatch } from "../../hooks";
-import { accountAction } from "../../store/account/slice";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faEnvelope, faLock } from "@fortawesome/free-solid-svg-icons";
-import { useNavigate } from "react-router-dom";
-import PATHS from "../../paths";
-import style from "./login.module.css";
-import { EMAIL, PASSWORD } from "../../constants/placeholders";
-import { Link } from "react-router-dom";
-import { LoginErrorProps } from "../../interfaces/LoginErrorProps";
 import { appAction } from "../../store/app/slice";
+import { accountAction } from "../../store/account/slice";
+import { login } from "../../firebase/auth";
+import { EMAIL, PASSWORD } from "../../constants/placeholders";
+import PATHS from "../../paths";
+import { LoginUserProps } from "../../interfaces/LoginUserProps";
+import { LoginErrorProps } from "../../interfaces/LoginErrorProps";
+import styles from "./login.module.scss";
 
 const FormKeys = {
   Email: "email",
@@ -86,13 +85,13 @@ const Login = () => {
   };
 
   return (
-    <div className={style.loginContainer}>
-      <div className={style.loginBox}>
-        <h2 className={style.title}>Login</h2>
-        <p className={style.text}>Sign in to your account.</p>
-        <form onSubmit={handleLogin} className={style.formContainer}>
-          <div className={style.inputContainer}>
-            <span className={style.icon}>
+    <div className={styles.login}>
+      <div className={styles.login__box}>
+        <h2 className={styles.login__title}>Login</h2>
+        <p className={styles.login__text}>Sign in to your account.</p>
+        <form onSubmit={handleLogin} className={styles.login__form}>
+          <div className={styles.login__inputContainer}>
+            <span className={styles.login_icon}>
               <FontAwesomeIcon icon={faEnvelope} />
             </span>
             <input
@@ -101,13 +100,15 @@ const Login = () => {
               value={user.email}
               onChange={onInputHandler}
               placeholder={EMAIL}
-              className={style.input}
+              className={styles.login__input}
               required
             />
-            {errors.email && <p className={style.error}>{errors.email}</p>}
+            {errors.email && (
+              <p className={styles.login__error}>{errors.email}</p>
+            )}
           </div>
-          <div className={style.inputContainer}>
-            <span className={style.icon}>
+          <div className={styles.login__inputContainer}>
+            <span className={styles.login__icon}>
               <FontAwesomeIcon icon={faLock} />
             </span>
             <input
@@ -116,17 +117,17 @@ const Login = () => {
               value={user.password}
               onChange={onInputHandler}
               placeholder={PASSWORD}
-              className={style.input}
+              className={styles.login__input}
               required
             />
             {errors.password && (
-              <p className={style.error}>{errors.password}</p>
+              <p className={styles.login__error}>{errors.password}</p>
             )}
           </div>
-          <button type="submit" className={style.button}>
+          <button type="submit" className={styles.login__button}>
             Login
           </button>
-          <p className={style.registrationLink}>
+          <p className={styles.login__registrationLink}>
             If you don't have profile click <Link to={PATHS.SignUp}>here</Link>
           </p>
         </form>

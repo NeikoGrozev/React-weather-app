@@ -1,10 +1,10 @@
 import { ClockLoader } from "react-spinners";
-import styles from "./spinner.module.css";
 import { MAIN_YELLOW } from "../../constants/colors";
+import styles from "./spinner.module.scss";
 
 const Spinner = () => {
   return (
-    <div className={styles.spinnerContainer}>
+    <div className={styles.spinner}>
       <ClockLoader
         color={MAIN_YELLOW}
         size={80}
