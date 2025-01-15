@@ -1,12 +1,14 @@
-.container {
+@use "../../styles/utils/variables" as variables;
+
+.footer {
   width: 100%;
   height: 40px;
-  background-color: $primary-blue;
+  background-color: variables.$primary-blue;
   position: absolute;
   bottom: 0;
   display: flex;
   align-items: center;
-  color: $primary-yellow;
+  color: variables.$primary-yellow;
   border-top-left-radius: 20px;
   border-top-right-radius: 20px;
 

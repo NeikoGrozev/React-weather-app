@@ -1,3 +1,5 @@
+@use "../../styles/utils/variables" as variables;
+
 .login {
   display: flex;
   justify-content: center;
@@ -10,7 +12,7 @@
     border-radius: 10px;
     padding: 10px;
     box-shadow: 0px 0px 20px 0px rgba(231, 166, 26, 0.6);
-    width: 30%;
+    width: 40%;
     background-image: url("../../assets/backgrounds/login-background.jpg");
     background-position: center;
     background-size: cover;
@@ -18,12 +20,12 @@
 
   &__title {
     text-align: center;
-    color: $silver;
+    color: variables.$silver;
   }
 
   &__text {
     text-align: center;
-    color: $primary-yellow;
+    color: variables.$primary-yellow;
     margin-bottom: 20px;
     font-size: 14px;
   }
@@ -45,7 +47,7 @@
     top: 4px;
     left: 8px;
     font-size: 14px;
-    color: $silver2;
+    color: variables.$silver2;
   }
 
   &__input {
@@ -67,26 +69,26 @@
 
     &:hover {
       cursor: pointer;
-      color: $primary-blue;
-      background-color: $primary-yellow;
+      color: variables.$primary-blue;
+      background-color: variables.$primary-yellow;
     }
   }
 
   &__registrationLink {
     text-align: end;
-    color: $primary-yellow;
+    color: variables.$primary-yellow;
     margin: 5px;
     font-size: 14px;
 
     a {
-      color: $primary-yellow;
+      color: variables.$primary-yellow;
       font-style: italic;
     }
   }
 
   &__error {
-    color: $red;
-    background-color: $primary-yellow;
+    color: variables.$red;
+    background-color: variables.$primary-yellow;
     font-size: 10px;
     margin: 5px;
     padding: 3px 0;

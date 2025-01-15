@@ -5,7 +5,7 @@ import SignUp from "./components/signUp/SignUp";
 import Login from "./components/login/Login";
 import Footer from "./components/footer/Footer";
 import PATHS from "./paths";
-import "./App.css";
+import styles from "./App.module.scss";
 import { useAppDispatch, useAppSelector } from "./hooks";
 import { useEffect } from "react";
 import { appAction } from "./store/app/slice";
@@ -16,7 +16,6 @@ import { accountAction } from "./store/account/slice";
 import { serializeUser } from "./firebase/firebaseHelper";
 import { UserProps } from "./interfaces/UserProps";
 import Spinner from "./components/spinner/Spinner";
-import "./styles/main.scss";
 
 function App() {
   const dispatch = useAppDispatch();
@@ -42,13 +41,15 @@ function App() {
   }, [dispatch]);
 
   return (
-    <div className={`wrapper ${dayOrNight ? "night" : "day"}`}>
+    <div className={`${styles.app} ${dayOrNight ? styles.night : styles.day}`}>
       <Header />
-      <Routes>
-        <Route path={PATHS.Home} element={<Home />} />
-        <Route path={PATHS.SignUp} element={<SignUp />} />
-        <Route path={PATHS.Login} element={<Login />} />
-      </Routes>
+      <div className={styles.app__wrapper}>
+        <Routes>
+          <Route path={PATHS.Home} element={<Home />} />
+          <Route path={PATHS.SignUp} element={<SignUp />} />
+          <Route path={PATHS.Login} element={<Login />} />
+        </Routes>
+      </div>
       <Footer />
       {showSpinner && <Spinner />}
     </div>

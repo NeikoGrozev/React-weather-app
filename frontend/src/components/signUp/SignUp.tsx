@@ -15,7 +15,7 @@ import {
 import PATHS from "../../paths";
 import { SignUpUserProps } from "../../interfaces/SignUpUserProps";
 import { SignUpErrorProps } from "../../interfaces/SignUpErrorProps";
-import style from "./signUp.module.scss";
+import styles from "./signUp.module.scss";
 
 const FormKeys = {
   Username: "username",
@@ -102,15 +102,15 @@ const SignUp = () => {
   };
 
   return (
-    <div className={style.signUp}>
-      <div className={style.signUp__box}>
-        <h2 className={style.signUp__title}>Registration</h2>
-        <p className={style.signUp__text}>
+    <div className={styles.signUp}>
+      <div className={styles.signUp__box}>
+        <h2 className={styles.signUp__title}>Registration</h2>
+        <p className={styles.signUp__text}>
           Create your account. It's free and only takes a minute.
         </p>
-        <form onSubmit={handleRegister} className={style.signUp__form}>
-          <div className={style.signUp__inputContainer}>
-            <span className={style.signUp__icon}>
+        <form onSubmit={handleRegister} className={styles.signUp__form}>
+          <div className={styles.signUp__inputContainer}>
+            <span className={styles.signUp__icon}>
               <FontAwesomeIcon icon={faUser} />
             </span>
             <input
@@ -119,15 +119,15 @@ const SignUp = () => {
               value={user.username}
               onChange={onInputHandler}
               placeholder={USERNAME}
-              className={style.signUp__input}
+              className={styles.signUp__input}
               required
             />
             {errors.username && (
-              <p className={style.signUp__error}>{errors.username}</p>
+              <p className={styles.signUp__error}>{errors.username}</p>
             )}
           </div>
-          <div className={style.signUp__inputContainer}>
-            <span className={style.signUp__icon}>
+          <div className={styles.signUp__inputContainer}>
+            <span className={styles.signUp__icon}>
               <FontAwesomeIcon icon={faEnvelope} />
             </span>
             <input
@@ -136,15 +136,15 @@ const SignUp = () => {
               value={user.email}
               onChange={onInputHandler}
               placeholder={EMAIL}
-              className={style.signUp__input}
+              className={styles.signUp__input}
               required
             />
             {errors.email && (
-              <p className={style.signUp__error}>{errors.email}</p>
+              <p className={styles.signUp__error}>{errors.email}</p>
             )}
           </div>
-          <div className={style.signUp__inputContainer}>
-            <span className={style.signUp__icon}>
+          <div className={styles.signUp__inputContainer}>
+            <span className={styles.signUp__icon}>
               <FontAwesomeIcon icon={faLock} />
             </span>
             <input
@@ -153,15 +153,15 @@ const SignUp = () => {
               value={user.password}
               onChange={onInputHandler}
               placeholder={PASSWORD}
-              className={style.signUp__input}
+              className={styles.signUp__input}
               required
             />
             {errors.password && (
-              <p className={style.signUp__error}>{errors.password}</p>
+              <p className={styles.signUp__error}>{errors.password}</p>
             )}
           </div>
-          <div className={style.signUp__inputContainer}>
-            <span className={style.signUp__icon}>
+          <div className={styles.signUp__inputContainer}>
+            <span className={styles.signUp__icon}>
               <FontAwesomeIcon icon={faLock} />
             </span>
             <input
@@ -170,17 +170,17 @@ const SignUp = () => {
               value={user.confirmPassword}
               onChange={onInputHandler}
               placeholder={CONFIRM_PASSWORD}
-              className={style.signUp__input}
+              className={styles.signUp__input}
               required
             />
             {errors.confirmPassword && (
-              <p className={style.signUp__error}>{errors.confirmPassword}</p>
+              <p className={styles.signUp__error}>{errors.confirmPassword}</p>
             )}
           </div>
-          <button type="submit" className={style.signUp__button}>
+          <button type="submit" className={styles.signUp__button}>
             Sign Up
           </button>
-          <p className={style.signUp__loginLink}>
+          <p className={styles.signUp__loginLink}>
             If you already have profile click <Link to={PATHS.Login}>here</Link>
           </p>
         </form>

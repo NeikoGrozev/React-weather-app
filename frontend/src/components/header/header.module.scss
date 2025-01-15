@@ -1,7 +1,9 @@
-.container {
+@use "../../styles/utils/variables" as variables;
+
+.header {
   width: 100%;
   height: 40px;
-  background-color: $primary-yellow;
+  background-color: variables.$primary-yellow;
   display: flex;
   justify-content: space-between;
   border-bottom-left-radius: 20px;
@@ -22,7 +24,7 @@
 
   &__appName {
     a {
-      color: $primary-blue;
+      color: variables.$primary-blue;
       text-decoration: none !important;
       font-size: 18px;
     }
@@ -36,7 +38,7 @@
 
   &__button {
     a {
-      color: $primary-blue;
+      color: variables.$primary-blue;
       text-decoration: none !important;
       padding: 0 10px;
     }

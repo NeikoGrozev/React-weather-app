@@ -7,6 +7,7 @@ import { APP_NAME } from "../../constants";
 import PATHS from "../../paths";
 import logo from "../../assets/logo.png";
 import styles from "./header.module.scss";
+//import "./_header.scss";
 
 const Header = () => {
   const dispatch = useAppDispatch();
