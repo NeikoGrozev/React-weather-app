@@ -1,0 +1,48 @@
+@use "../../../styles/utils/variables" as variables;
+
+.searchResult {
+  min-height: 60px;
+  padding: 5px 20px;
+  border: 3px solid variables.$primary-yellow;
+  border-radius: 10px;
+  background-color: variables.$white;
+
+  a {
+    text-decoration: none;
+    color: inherit;
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+  }
+
+  &:hover {
+    cursor: pointer;
+    background-color: variables.$primary-yellow;
+  }
+
+  &__localizedName {
+    font-size: 18px;
+    font-weight: 600;
+  }
+
+  &__left {
+    width: 50%;
+  }
+
+  &__right {
+    text-align: right;
+  }
+
+  &__rightTitle {
+    font-size: 16px;
+    font-weight: 600;
+  }
+
+  &__geoPosition {
+    font-size: 12px;
+  }
+
+  &__geoPositionValue {
+    font-weight: 600;
+  }
+}

@@ -16,6 +16,8 @@ import { accountAction } from "./store/account/slice";
 import { serializeUser } from "./firebase/firebaseHelper";
 import { UserProps } from "./interfaces/UserProps";
 import Spinner from "./components/spinner/Spinner";
+import SearchResult from "./components/searchResult/SearchResult";
+import GeoLocation from "./components/geoLocation/GeoLocation";
 
 function App() {
   const dispatch = useAppDispatch();
@@ -48,6 +50,8 @@ function App() {
           <Route path={PATHS.Home} element={<Home />} />
           <Route path={PATHS.SignUp} element={<SignUp />} />
           <Route path={PATHS.Login} element={<Login />} />
+          <Route path={PATHS.SearchResult} element={<SearchResult />} />
+          <Route path={PATHS.GeoLocation} element={<GeoLocation />} />
         </Routes>
       </div>
       <Footer />

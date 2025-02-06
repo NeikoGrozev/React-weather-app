@@ -1,10 +1,10 @@
-import Search from "../search/Search";
+import SearchBar from "../search/SearchBar";
 import styles from "./home.module.scss";
 
 const Home = () => {
   return (
     <div className={styles.home}>
-      <Search />
+      <SearchBar />
     </div>
   );
 };
